@@ -1,577 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pawel Kaminski - Senior Software Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--logo-color);
-        }
-
-        /* Theme Variables - Elegant Dark */
-        :root {
-            --logo-color: #d97706;
-            --header-color: #d97706;
-            --gradient-start: #d97706;
-            --gradient-end: #c2410c;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--header-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--gradient-end);
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-        }
-
-        .section {
-            padding: 4rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--header-color);
-        }
-
-        /* About Me Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .avatar-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .avatar {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--header-color);
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 2rem;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--header-color);
-        }
-
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Technologies Section */
-        .skills-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .skill-tag {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .skill-tag:hover::before {
-            left: 0;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-
-        /* Skill sizes based on importance/proficiency */
-        .skill-tag.size-xl {
-            font-size: 1.8rem;
-            padding: 1rem 2rem;
-        }
-
-        .skill-tag.size-lg {
-            font-size: 1.5rem;
-            padding: 0.9rem 1.8rem;
-        }
-
-        .skill-tag.size-md {
-            font-size: 1.2rem;
-            padding: 0.8rem 1.5rem;
-        }
-
-        .skill-tag.size-sm {
-            font-size: 1rem;
-            padding: 0.7rem 1.3rem;
-        }
-
-        .skill-tag.size-xs {
-            font-size: 0.9rem;
-            padding: 0.6rem 1.2rem;
-        }
-
-        /* Category colors */
-        .skill-tag.category-frontend {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .skill-tag.category-backend {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-        }
-
-        .skill-tag.category-cloud {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-        }
-
-        .skill-tag.category-data {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            color: white;
-        }
-
-        .skill-tag.category-ai {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            color: white;
-        }
-
-        .skill-tag.category-other {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-            color: white;
-        }
-
-        /* Talks & Text Section */
-        .talks-text-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 2rem;
-        }
-
-        .talks-column,
-        .text-column {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .column-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--header-color);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .link-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .link-item {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid var(--header-color);
-        }
-
-        .link-item a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            display: block;
-        }
-
-        .link-item a:hover {
-            color: var(--header-color);
-        }
-
-        .link-description {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .talks-text-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
-        /* Trusted Me Section */
-        .trusted-container {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: row;
-            gap: 2rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .trusted-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            flex: 1;
-            max-width: 350px;
-        }
-
-        .trusted-logo {
-            width: 200px;
-            height: 120px;
-            background: white;
-            border-radius: 8px;
-            margin: 0 auto 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--header-color);
-        }
-
-        .trusted-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .trusted-dates {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: normal;
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .contact-btn svg {
-            flex-shrink: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.5rem 0;
-            }
-
-            .nav-container {
-                padding: 0 1rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-menu {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .section {
-                padding: 2rem 0;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .avatar {
-                width: 200px;
-                height: 200px;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
-            .about-text {
-                font-size: 1rem;
-            }
-
-            .about-text p {
-                margin-bottom: 1.5rem;
-            }
-
-            .social-links {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: center;
-            }
-
-            .contact-btn {
-                padding: 14px 28px;
-                font-size: 1rem;
-                width: 200px;
-                justify-content: center;
-            }
-
-            .skills-cloud {
-                padding: 1.5rem;
-                gap: 0.8rem;
-            }
-
-            .skill-tag.size-xl {
-                font-size: 1.4rem;
-                padding: 0.8rem 1.5rem;
-            }
-
-            .skill-tag.size-lg {
-                font-size: 1.2rem;
-                padding: 0.7rem 1.3rem;
-            }
-
-            .skill-tag.size-md {
-                font-size: 1rem;
-                padding: 0.6rem 1.2rem;
-            }
-
-            .skill-tag.size-sm {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
-
-            .skill-tag.size-xs {
-                font-size: 0.8rem;
-                padding: 0.5rem 1rem;
-            }
-
-            .talks-text-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .trusted-container {
-                flex-direction: column;
-            }
-
-            .trusted-item {
-                padding: 1.5rem;
-                max-width: 100%;
-            }
-
-            .trusted-logo {
-                width: 160px;
-                height: 100px;
-            }
-        }
-    </style>
+    <meta name="description"
+        content="Senior Software Developer specializing in JavaScript, Cloud, and AI. Portfolio of Pawel Kaminski.">
+    <meta property="og:title" content="Pawel Kaminski - Senior Software Developer">
+    <meta property="og:description" content="Senior Software Developer specializing in JavaScript, Cloud, and AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kamyk-pl.github.io/">
+    <meta property="og:image" content="https://github.com/kamyk-pl.png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">Paweł Kamiński</div>
-            <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About Me</a></li>
+            <a href="#home" class="logo-link">
+                <div class="logo">Paweł Kamiński</div>
+            </a>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Home link removed, logo serves as home -->
+                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#talks-texts" class="nav-link">Talks & Texts</a></li>
                 <li><a href="#trusted" class="nav-link">Trusted Me</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                        <!-- Moon Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="moon-icon"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
 
+    <script>
+        // Check local storage or system preference
+        const savedTheme = localStorage.getItem('selected-theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+
     <!-- Main Content -->
     <main class="main-content">
-        <!-- About Me Section -->
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="avatar-container">
-                    <div class="avatar">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <canvas id="hero-particles"></canvas>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Building the <span class="hero-highlight">Future</span> with Code & AI</h1>
+                    <p class="hero-subtitle">Senior Software Developer with 15+ years of experience specializing in
+                        JavaScript Ecosystems, Cloud Architecture, and AI Agents.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/kamyk-pl" class="social-btn" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            GitHub
+                        </a>
+                        <a href="https://pl.linkedin.com/in/kamyk" class="social-btn" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-avatar-container">
+                    <div class="hero-avatar">
                         <img src="https://github.com/kamyk-pl.png" alt="Pawel Kaminski" id="avatar-img">
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section reveal" style="background: var(--bg-light);">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
                 <div class="about-text">
-                    <p>Over the past 15+ years, I've had the opportunity to work on many smaller and larger projects for clients of various sizes in locations near and far. I've seen plenty of good and bad things in the IT world, and I'm always up for the next technical challenge.</p>
-                    <p>I specialize not only in JavaScript but also have extensive experience with Java, and I remain open to new technologies. I believe AI will eventually take my job, but until then, I'm putting it to work for me. My expertise spans web technologies, team building, and requirements analysis.</p>
-                    <p>I've worked with clients in global automotive, sports equipment, and financial services, coordinating teams across Poland, Germany, USA, and India.</p>
+                    <p>Over the past 15+ years, I've had the opportunity to work on many smaller and larger projects for
+                        clients of various sizes in locations near and far. I've seen plenty of good and bad things in
+                        the IT world, and I'm always up for the next technical challenge.</p>
+                    <p>I specialize not only in JavaScript but also have extensive experience with Java, and I remain
+                        open to new technologies. I believe AI will eventually take my job, but until then, I'm putting
+                        it to work for me.</p>
+                    <p>I've worked with clients in global automotive, sports equipment, and financial services,
+                        coordinating teams across Poland, Germany, USA, and India.</p>
 
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="section">
+        <section id="skills" class="section reveal">
             <h2 class="section-title">Skills</h2>
             <div class="skills-cloud">
+                <span class="skill-tag category-ai size-xl">AI Coding</span>
+                <span class="skill-tag category-ai size-xl">AI Agents</span>
                 <span class="skill-tag category-frontend size-xl">JavaScript</span>
                 <span class="skill-tag category-cloud size-xl">AWS</span>
+                <span class="skill-tag category-cloud size-xl">Azure</span>
                 <span class="skill-tag category-backend size-lg">Node.js</span>
                 <span class="skill-tag category-frontend size-lg">Angular</span>
                 <span class="skill-tag category-data size-md">MongoDB</span>
                 <span class="skill-tag category-frontend size-xl">TypeScript</span>
-                <span class="skill-tag category-ai size-lg">AI Coding</span>
                 <span class="skill-tag category-frontend size-lg">React</span>
                 <span class="skill-tag category-cloud size-md">Kubernetes</span>
                 <span class="skill-tag category-backend size-md">Express.js</span>
@@ -581,7 +141,6 @@
                 <span class="skill-tag category-backend size-md">REST APIs</span>
                 <span class="skill-tag category-cloud size-md">Terraform</span>
                 <span class="skill-tag category-frontend size-md">CSS3</span>
-                <span class="skill-tag category-ai size-md">AI Agents</span>
                 <span class="skill-tag category-frontend size-sm">PWA</span>
                 <span class="skill-tag category-data size-sm">SQL</span>
                 <span class="skill-tag category-frontend size-sm">WebXR</span>
@@ -591,7 +150,7 @@
         </section>
 
         <!-- Talks & Texts Section -->
-        <section id="talks-texts" class="section">
+        <section id="talks-texts" class="section reveal">
             <h2 class="section-title">Talks & Texts</h2>
             <div class="talks-text-container">
                 <!-- Left Column - Talks -->
@@ -599,15 +158,19 @@
                     <h3 class="column-title">Talks</h3>
                     <ul class="link-list">
                         <li class="link-item">
-                            <a href="https://4developers.org.pl/lecture_wroclaw_2023/#id=88439" target="_blank">[PL] Czasem warto wyważać otwarte drzwi, czyli jak napisaliśmy sobie lepszą implementację produktu AWS</a>
+                            <a href="https://4developers.org.pl/lecture_wroclaw_2023/#id=88439" target="_blank">[PL]
+                                Czasem warto wyważać otwarte drzwi, czyli jak napisaliśmy sobie lepszą implementację
+                                produktu AWS</a>
                             <div class="link-description">4Developers Wrocław 2023</div>
                         </li>
                         <li class="link-item">
-                            <a href="https://kamyk-pl.github.io/4-developers-alice/index.html#/title-0" target="_blank">Let's invite A(R)lice from Wonderland to our browsers</a>
+                            <a href="https://kamyk-pl.github.io/4-developers-alice/index.html#/title-0"
+                                target="_blank">Let's invite A(R)lice from Wonderland to our browsers</a>
                             <div class="link-description">4Developers 2021</div>
                         </li>
                         <li class="link-item">
-                            <a href="https://kamyk-pl.github.io/gdg-ar-vr/#/title-0" target="_blank">AR and VR in your browser are just around the corner</a>
+                            <a href="https://kamyk-pl.github.io/gdg-ar-vr/#/title-0" target="_blank">AR and VR in your
+                                browser are just around the corner</a>
                             <div class="link-description">GDG Wrocław 2019</div>
                         </li>
                     </ul>
@@ -618,11 +181,13 @@
                     <h3 class="column-title">Texts</h3>
                     <ul class="link-list">
                         <li class="link-item">
-                            <a href="https://pl.linkedin.com/pulse/bez-serc-ducha-szkielet%C3%B3w-ludy-czyli-oda-od-do-aka-troszk%C4%99-kaminski-gbime" target="_blank">[PL] Bez serc, bez ducha, to szkieletów ludy...</a>
+                            <a href="https://pl.linkedin.com/pulse/bez-serc-ducha-szkielet%C3%B3w-ludy-czyli-oda-od-do-aka-troszk%C4%99-kaminski-gbime"
+                                target="_blank">[PL] Bez serc, bez ducha, to szkieletów ludy...</a>
                             <div class="link-description">April 2024</div>
                         </li>
                         <li class="link-item">
-                            <a href="https://pl.linkedin.com/pulse/frontendowiec-w-chmurach-pawel-kaminski" target="_blank">[PL] Frontendowiec w chmurach</a>
+                            <a href="https://pl.linkedin.com/pulse/frontendowiec-w-chmurach-pawel-kaminski"
+                                target="_blank">[PL] Frontendowiec w chmurach</a>
                             <div class="link-description">September 2022</div>
                         </li>
                     </ul>
@@ -631,7 +196,7 @@
         </section>
 
         <!-- Trusted Me Section -->
-        <section id="trusted" class="section">
+        <section id="trusted" class="section reveal">
             <h2 class="section-title">Trusted Me</h2>
             <div class="trusted-container">
                 <div class="trusted-item">
@@ -655,38 +220,227 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-container">
-                <div class="contact-links">
-                    <a href="https://github.com/kamyk-pl" class="contact-btn" target="_blank">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
-                    </a>
-                    <a href="https://pl.linkedin.com/in/kamyk" class="contact-btn" target="_blank">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        LinkedIn
-                    </a>
+        <!-- Footer serves as Contact now -->
+        <footer id="contact" class="footer reveal">
+            <div class="nav-container">
+                <p class="footer-text">&copy; 2026 Paweł Kamiński. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/kamyk-pl" target="_blank">GitHub</a>
+                    <a href="https://pl.linkedin.com/in/kamyk" target="_blank">LinkedIn</a>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        <script>
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
-    </script>
+
+            // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Theme Toggle Logic
+            const toggleBtn = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const STORAGE_KEY = 'selected-theme'; // Changed key to reset legacy preferences
+
+            // Icons
+            const moonIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="moon-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+            const sunIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="sun-icon" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+            function updateIcon(theme) {
+                toggleBtn.innerHTML = theme === 'dark' ? sunIcon : moonIcon;
+            }
+
+            // Init icon
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+            updateIcon(currentTheme);
+
+            toggleBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem(STORAGE_KEY, newTheme);
+                updateIcon(newTheme);
+            });
+
+            // Listen for System Changes
+            const systemQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            systemQuery.addEventListener('change', (e) => {
+                const savedTheme = localStorage.getItem(STORAGE_KEY);
+                // Only auto-switch if user hasn't manually overridden
+                if (!savedTheme) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    htmlElement.setAttribute('data-theme', newTheme);
+                    updateIcon(newTheme);
+                }
+            });
+
+            // Mobile Menu Logic
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+
+
+            // --- Interactive Particles ---
+            const canvas = document.getElementById('hero-particles');
+            const ctx = canvas.getContext('2d');
+            let particlesArray;
+
+            // Size canvas
+            canvas.width = window.innerWidth;
+            canvas.height = document.querySelector('.hero-section').offsetHeight;
+
+            // Mouse interaction
+            let mouse = {
+                x: null,
+                y: null,
+                radius: 150
+            };
+
+            window.addEventListener('mousemove', (event) => {
+                // Adjust mouse calculations if canvas isn't at 0,0 (it's in a section)
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = event.x - rect.left;
+                mouse.y = event.y - rect.top;
+            });
+
+            // Adjust on resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = document.querySelector('.hero-section').offsetHeight;
+                initParticles();
+            });
+
+            // Particle Class
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = getThemeColor();
+                    ctx.fill();
+                }
+                update() {
+                    // Check bounds
+                    if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                    if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+
+                    // Move
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+
+                    // Mouse interaction
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouse.radius + this.size) {
+                        if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 10;
+                        if (mouse.x > this.x && this.x > this.size * 10) this.x -= 10;
+                        if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 10;
+                        if (mouse.y > this.y && this.y > this.size * 10) this.y -= 10;
+                    }
+                    this.draw();
+                }
+            }
+
+            function getThemeColor() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                return isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.3)';
+            }
+
+            function getLineColor() {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                return isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                // Disable on mobile/tablet (performance & clean look)
+                if (window.innerWidth < 768) return;
+
+                // Density
+                let numberOfParticles = (canvas.width * canvas.height) / 9000;
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 3) + 1;
+                    let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * 0.4) - 0.2;
+                    let directionY = (Math.random() * 0.4) - 0.2;
+                    let color = getThemeColor();
+
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+                if (window.innerWidth < 768) return; // Stop drawing loop on mobile
+
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+                connect();
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
+                            ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+
+                        if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                            opacityValue = 1 - (distance / 20000);
+                            ctx.strokeStyle = getLineColor();
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            // Start
+            initParticles();
+            animateParticles();
+        </script>
 </body>
+
 </html>

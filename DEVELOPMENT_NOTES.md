@@ -36,8 +36,9 @@
 - [ ] Include case studies of major projects (automotive, sports equipment, financial)
 
 ### User Experience Improvements
-- [ ] Add dark/light theme toggle functionality
-- [ ] Implement smooth scroll animations and page transitions
+- ✅ Add dark/light theme toggle functionality
+- ✅ Implement smooth scroll animations and page transitions
+- ✅ Highly optimized Mobile Experience (Single-line menu, Minimalist grid)
 - [ ] Create interactive skill cards with hover details
 - [ ] Add loading animations and skeleton screens
 - [ ] Implement accessibility improvements (ARIA labels, keyboard navigation)
@@ -72,6 +73,8 @@
 - **Styling**: CSS Grid, Flexbox, CSS Animations
 - **Icons**: SVG graphics
 - **Images**: Local assets with fallback to GitHub API
+- **Interactivity**: Canvas API (Interactive Particles), ScrollReveal (Intersection Observer)
+- **Theming**: Dark mode with CSS Variables & System Preference Sync
 
 ### Potential Future Stack
 - **Framework**: Consider migrating to React/Vue for enhanced interactivity
@@ -131,3 +134,20 @@
 
 Last Updated: December 2024
 Next Review: Q1 2025
+
+## Polish & Advanced Features (Jan 2026) 💎
+
+### Action Plan (Completed) ✅
+1.  **Refactor:** Extracted CSS to `css/style.css`, unified Inter font.
+2.  **Interactive Hero:** Implemented Mouse-aware Particle Background (Neural Network).
+3.  **Dark Mode:** Integrated manual toggle + system preference detection. 
+4.  **Mobile Overhaul:**
+    *   Replaced Hamburger with a **Single-line Sticky Menu**.
+    *   Transformed Skills into a **3-column Minimalist Grid** (0.7rem text).
+    *   Optimized "Trusted Me" into a single-column stack.
+    *   Tightened all section spacing for better mobile flow.
+
+## Next Steps Ideas 💡
+- **Project Portfolio:** Add a section for detailed case studies.
+- **Blog:** Expand the "Texts" section into a full blog.
+- **Multilingual:** Add full English/Polish/German support toggle.
